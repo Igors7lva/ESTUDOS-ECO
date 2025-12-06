@@ -1,0 +1,26 @@
+# Script: Simulação da Curva de Kuznets Ambiental
+# Autor: [Teu Nome]
+# Objetivo: Demonstrar a relação teórica entre PIB per capita e Degradação Ambiental
+
+# 1. Criar dados simulados
+pib_per_capita <- seq(0, 20000, by = 100) # Renda variando de 0 a 20.000
+
+# Fórmula quadrática invertida para simular a curva (apenas ilustrativo)
+degradacao <- -((pib_per_capita - 10000)^2) + 100000000
+
+# Ajustar escala para ficar bonitinho no gráfico
+degradacao <- degradacao / 1000000 
+
+# 2. Gerar o Gráfico
+plot(x = pib_per_capita, 
+     y = degradacao,
+     type = "l", # Tipo linha
+     col = "darkgreen", 
+     lwd = 3, # Espessura da linha
+     main = "Curva de Kuznets Ambiental (Simulação)",
+     xlab = "PIB per Capita ($)",
+     ylab = "Degradação Ambiental (Índice)")
+
+# Adicionar uma linha indicando o ponto de virada
+abline(v = 10000, col = "red", lty = 2)
+text(10000, min(degradacao), "Ponto de Inflexão", pos = 4, col = "red")
